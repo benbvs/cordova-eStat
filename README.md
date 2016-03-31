@@ -1,2 +1,2 @@
 # cordova-eStat
-Integrate Médiamétrie tracking
+Integrate tracking
