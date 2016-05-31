@@ -14,7 +14,7 @@ eStatAudienceTagger* audienceTagger;
     if (serial != nil && [serial length] > 0) {
 		audienceTagger = [eStatAudienceTagger eStatAudienceTaggerWithSerial:serial withCustomerData:@""];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:serial];
-		NSLog(@"Hello %@!", eStatVersion);
+		/* NSLog(@"Hello %@!", eStatVersion); */
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
