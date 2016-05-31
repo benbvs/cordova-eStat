@@ -20,4 +20,21 @@
 		<source-file src="android/eStat-SDK-5.12.jar" target-dir="libs" />
 		<source-file src="android/tape-1.2.3.jar" target-dir="libs" />
     </platform>
+    <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="estat">
+        <param name="ios-package" value="org.apache.cordova.estat.estat" />
+      </feature>
+    </config-file>
+
+    <header-file src="ios/estat.h" />
+    <source-file src="ios/estat.m" />
+    <source-file src="ios/libeStatTaggerSDK.a" framework="true" />
+    <header-file src="ios/eStatAudienceTagger.h" />
+    <header-file src="ios/eStatEnums.h" />
+    <header-file src="ios/eStatStreamingConfig.h" />
+    <header-file src="ios/eStatStreamingTagger.h" />
+    <header-file src="ios/eStatStreamingTaggerDelegate.h" />
+    <header-file src="ios/eStatTagger.h" />
+  </platform>
 </plugin>
