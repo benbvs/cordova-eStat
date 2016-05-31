@@ -1,5 +1,5 @@
 # cordova-eStat
-Integrate tracking
+Integrate tracking (Android/IOS)
 
 ## Installation
 `cordova plugin add https://github.com/benbvs/cordova-eStat`
