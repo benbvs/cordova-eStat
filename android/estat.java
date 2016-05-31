@@ -4,7 +4,6 @@ import fr.mediametrie.mesure.library.android.*;
 import com.squareup.tape.*;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import android.R;
@@ -27,8 +26,23 @@ public class estat extends CordovaPlugin {
       callbackContext.success();
       return true;
     }else if("sendHitEstat".equals(action)){
-		this.sendHit(args.getJSONArray(0), callbackContext);
-		callbackContext.success();
+		if(args.length() == 1)
+		{
+			this.sendHit(args.getString(0), callbackContext);
+			callbackContext.success();
+		} else if (args.length() == 2)
+		{
+			this.sendHit(args.getString(0), args.getString(1), callbackContext);
+			callbackContext.success();
+		} else if (args.length() == 3)
+		{
+			this.sendHit(args.getString(0), args.getString(1), args.getString(2), callbackContext);
+			callbackContext.success();
+		} else if (args.length() == 4)
+		{
+			this.sendHit(args.getString(0), args.getString(1), args.getString(2), args.getString(3), callbackContext);
+			callbackContext.success();
+		}
       return true;
     } else {
       callbackContext.error("AlertPlugin."+action+" not found !");
@@ -74,23 +88,37 @@ public class estat extends CordovaPlugin {
         }
     }
 	
-	private void sendHit(JSONArray levels, CallbackContext callbackContext) {
+	private void sendHit(String level1, CallbackContext callbackContext) {
         if (trackerStarted) {
-			if(files.length() == 1) {
-				audienceTagger.sendHit(levels.getString(0));
-				callbackContext.success("estat hit sent");
-			} else if(files.length() == 2) {
-				audienceTagger.sendHit(levels.getString(0),levels.getString(1));
-				callbackContext.success("estat hit sent");
-			} else if(files.length() == 3) {
-				audienceTagger.sendHit(levels.getString(0),levels.getString(1),levels.getString(2));
-				callbackContext.success("estat hit sent");
-			} else if(files.length() == 4) {
-				audienceTagger.sendHit(levels.getString(0),levels.getString(1),levels.getString(2),levels.getString(3));
-				callbackContext.success("estat hit sent");
-			} else {
-				callbackContext.error("eStat : Levels length not supported");
-			}
+            audienceTagger.sendHit(level1);
+			callbackContext.success("estat hit sent");
+        } else {
+            callbackContext.error("eStat not initialized");
+        }
+    }
+	
+	private void sendHit(String level1, String level2, CallbackContext callbackContext) {
+        if (trackerStarted) {
+            audienceTagger.sendHit(level1, level2);
+			callbackContext.success("estat hit sent");
+        } else {
+            callbackContext.error("eStat not initialized");
+        }
+    }
+	
+	private void sendHit(String level1, String level2, String level3, CallbackContext callbackContext) {
+        if (trackerStarted) {
+            audienceTagger.sendHit(level1, level2, level3);
+			callbackContext.success("estat hit sent");
+        } else {
+            callbackContext.error("eStat not initialized");
+        }
+    }
+	
+	private void sendHit(String level1, String level2, String level3, String level4, CallbackContext callbackContext) {
+        if (trackerStarted) {
+            audienceTagger.sendHit(level1, level2, level3, level4);
+			callbackContext.success("estat hit sent");
         } else {
             callbackContext.error("eStat not initialized");
         }
