@@ -10,24 +10,6 @@
 	<js-module src="www/estat.js" name="estat">
     <clobbers target="estat" />
 	</js-module>
-	
-	<platform name="ios">
-		<config-file target="config.xml" parent="/*">
-		  <feature name="estat">
-			<param name="ios-package" value="estat" />
-		  </feature>
-		</config-file>
-		<header-file src="ios/estat.h" />
-		<source-file src="ios/estat.m" />
-		<source-file src="ios/libeStatTaggerSDK.a" framework="true" />
-		<header-file src="ios/eStatAudienceTagger.h" />
-		<header-file src="ios/eStatEnums.h" />
-		<header-file src="ios/eStatStreamingConfig.h" />
-		<header-file src="ios/eStatStreamingTagger.h" />
-		<header-file src="ios/eStatStreamingTaggerDelegate.h" />
-		<header-file src="ios/eStatTagger.h" />
-	</platform>
-  
 	<platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="estat">
