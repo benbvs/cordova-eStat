@@ -8,6 +8,7 @@ Integrate tracking (Android/IOS)
 ```javascript
 // Start tracker
 estat.initEstat('xxxxxxxxxxxx');
+
 // Send hit
 estat.sendHitEstat('level1');
 ```
