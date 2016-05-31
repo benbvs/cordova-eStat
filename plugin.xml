@@ -23,7 +23,7 @@
     <platform name="ios">
     <config-file target="config.xml" parent="/*">
       <feature name="estat">
-        <param name="ios-package" value="org.apache.cordova.estat.estat" />
+        <param name="ios-package" value="estat" />
       </feature>
     </config-file>
 
