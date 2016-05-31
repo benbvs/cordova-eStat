@@ -49,40 +49,15 @@ public class estat extends CordovaPlugin {
       return false;
     }
   }
- 
-  private void showAlert(String content){
-    // see http://developer.android.com/guide/topics/ui/dialogs.html
-    AlertDialog.Builder alertDialog = new AlertDialog.Builder(this.cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-    alertDialog.setTitle("Alert");
-    alertDialog.setMessage(content);
-    alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-      public void onClick(DialogInterface dialog, int id){
-        // User clicked OK button
-      }
-    });
-    alertDialog.show();
-  }
   
    private void startTracker(String id, CallbackContext callbackContext) {
         if (null != id && id.length() > 0) {
-            //GoogleAnalytics.getInstance(this.cordova.getActivity()).getTracker(id);
 			Estat.init(this.cordova.getActivity());
 			Estat.setLog(BuildConfig.DEBUG);
 			serial = id;
 			audienceTagger = Estat.getAudience(serial, "");
 			trackerStarted = true;
             callbackContext.success("estat started");
-			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this.cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-			alertDialog.setTitle("eStat started !");
-			alertDialog.setMessage(id + " V." + Estat.getVersion());
-			alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			  public void onClick(DialogInterface dialog, int id){
-				// User clicked OK button
-			  }
-			});
-			alertDialog.show();
-            
-            //GAServiceManager.getInstance().setLocalDispatchPeriod(30); //deprecated but whatcha gonna do? set dispatch period to 30 sec
         } else {
             callbackContext.error("serial is not valid");
         }
