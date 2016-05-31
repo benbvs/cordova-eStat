@@ -12,6 +12,7 @@
     if (serial != nil && [serial length] > 0) {
 		eStatAudienceTagger* audienceTagger = [eStatAudienceTagger eStatAudienceTaggerWithSerial:serial withCustomerData:@""];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:serial];
+		NSLog(@"Hello %@!", eStatVersion);
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
@@ -22,9 +23,9 @@
 - (void)sendHitEstat:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = nil;
-	NSArray  *levels = [command.arguments objectAtIndex:0];
-	NSString* level1 = [levels objectAtIndex:0]
-	[audienceTagger sendHitWithLevel1:@"niveau1" withLevel2:@"niveau2"];
+	/* NSArray  *levels = [command.arguments objectAtIndex:0]; */
+	NSString* level1 = [command.arguments objectAtIndex:0];
+	[audienceTagger sendHitWithLevel1:level1];
 	
     if (echo != nil && [echo length] > 0) {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
