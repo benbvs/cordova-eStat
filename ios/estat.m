@@ -12,9 +12,9 @@ eStatAudienceTagger* audienceTagger;
     NSString* serial = [command.arguments objectAtIndex:0];
 
     if (serial != nil && [serial length] > 0) {
-		audienceTagger = [eStatAudienceTagger eStatAudienceTaggerWithSerial:serial withCustomerData:@""];
+	audienceTagger = [eStatAudienceTagger eStatAudienceTaggerWithSerial:serial withCustomerData:@""];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:serial];
-		/* NSLog(@"Hello %@!", eStatVersion); */
+	 NSLog(@"Estat has started : %@!", serial);
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
@@ -31,6 +31,7 @@ eStatAudienceTagger* audienceTagger;
     if (level1 != nil && [level1 length] > 0) {
     	[audienceTagger sendHitWithLevel1:level1];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:level1];
+        NSLog(@"Estat sent hit : %@!", level1);
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
