@@ -25,10 +25,10 @@
     CDVPluginResult* pluginResult = nil;
 	/* NSArray  *levels = [command.arguments objectAtIndex:0]; */
 	NSString* level1 = [command.arguments objectAtIndex:0];
-	[audienceTagger sendHitWithLevel1:level1];
 	
-    if (echo != nil && [echo length] > 0) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
+    if (level1 != nil && [level1 length] > 0) {
+    	[audienceTagger sendHitWithLevel1:level1];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:level1];
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
